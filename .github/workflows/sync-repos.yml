@@ -383,7 +383,7 @@ jobs:
                     #### Check if this package has changed
                     package_prefix = f"data/{package.name}/".replace("\\", "/")
                     package_changed = any(p.replace("\\", "/").startswith(package_prefix) for p in changed)
-                    if package_changed:
+                    if True:
                         #### Update the main pack if necessary
                         # if package.name in main_repo_packages or re.fullmatch(r"magic-.+\.mse-include", package.name) or package.name.startswith("magic-m15"):
                         #     t0 = time.time()
