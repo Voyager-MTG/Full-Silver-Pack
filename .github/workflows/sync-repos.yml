@@ -22,14 +22,14 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: Voyager-MTG/Silver-MSE
-          token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
+          #token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
           path: basic-pack
 
       - name: Checkout Installer-Pack
         uses: actions/checkout@v6
         with:
           repository: Voyager-MTG/Silver-MSE-Installers
-          token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
+          #token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
           path: installer-pack
 
       - name: Set up Python
