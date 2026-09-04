@@ -2,70 +2,70 @@
 package:
 	name: ch-s.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124156 cn.png
-	file: 20260904T124156 locale
+	status: 50
+	file: M20260904T124156 cn.png
+	file: M20260904T124156 locale
 package:
 	name: ch-t.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124157 cn.png
-	file: 20260904T124157 locale
+	status: 50
+	file: M20260904T124157 cn.png
+	file: M20260904T124157 locale
 package:
 	name: da.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124158 dk.png
-	file: 20260904T124158 locale
+	status: 50
+	file: M20260904T124158 dk.png
+	file: M20260904T124158 locale
 package:
 	name: de.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124159 de.png
-	file: 20260904T124159 locale
+	status: 50
+	file: M20260904T124159 de.png
+	file: M20260904T124159 locale
 package:
 	name: en.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124200 locale
-	file: 20260904T124200 usgb.png
+	status: 50
+	file: M20260904T124200 locale
+	file: M20260904T124200 usgb.png
 package:
 	name: es.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124201 es.png
-	file: 20260904T124201 locale
+	status: 50
+	file: M20260904T124201 es.png
+	file: M20260904T124201 locale
 package:
 	name: fr.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124202 fr.png
-	file: 20260904T124202 locale
+	status: 50
+	file: M20260904T124202 fr.png
+	file: M20260904T124202 locale
 package:
 	name: github-zip-extractor.mse-updater
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124203 magicseteditor-updater.exe
-	file: 20260904T124203 updater
-	file: 20260904T124203 updater.png
+	status: 50
+	file: M20260904T121824 magicseteditor-updater.exe
+	file: M20260904T124203 updater
+	file: M20260904T124203 updater.png
 package:
 	name: it.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124204 it.png
-	file: 20260904T124204 locale
+	status: 50
+	file: M20260904T124204 it.png
+	file: M20260904T124204 locale
 package:
 	name: jp.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124205 jp.png
-	file: 20260904T124205 locale
+	status: 50
+	file: M20260904T124205 jp.png
+	file: M20260904T124205 locale
 package:
 	name: ko.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124206 ko.png
-	file: 20260904T124206 locale
+	status: 50
+	file: M20260904T124206 ko.png
+	file: M20260904T124206 locale
 package:
 	name: magic-DayNight.mse-style
 	version: 2024-05-30
@@ -4313,6 +4313,8 @@ package:
 	file: M20260903T181542 elements/card/swcard.png
 	file: M20260903T181542 elements/card/uacard.png
 	file: M20260903T181542 elements/card/ubcard.png
+	file: A20260903T181543 elements/card/ucard.png
+	file: A20260903T181543 elements/card/uccard.png
 	file: M20260903T181543 elements/card/ugcard.png
 	file: M20260903T181543 elements/card/umcard.png
 	file: M20260903T181543 elements/card/urcard.png
@@ -5815,6 +5817,12 @@ package:
 	file: M20260903T181545 elements/lev_3_3/alev_3_3.png
 	file: M20260903T181545 elements/lev_3_3/blev_3_3.png
 	file: M20260903T181545 elements/lev_3_3/clev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/glev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/mlev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/rlev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/slev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/ulev_3_3.png
+	file: A20260903T181546 elements/lev_3_3/wlev_3_3.png
 	file: M20260903T181546 elements/lev_4_1/alev_4_1.png
 	file: M20260903T181546 elements/lev_4_1/blev_4_1.png
 	file: M20260903T181546 elements/lev_4_1/clev_4_1.png
@@ -6229,6 +6237,7 @@ package:
 	file: M20260903T181546 elements/planecrown/gsplanecrown.png
 	file: M20260903T181546 elements/planecrown/guplanecrown.png
 	file: M20260903T181546 elements/planecrown/gwplanecrown.png
+	file: A20260903T181547 elements/planecrown/maplanecrown.png
 	file: M20260903T181547 elements/planecrown/mbplanecrown.png
 	file: M20260903T181547 elements/planecrown/mcplanecrown.png
 	file: M20260903T181547 elements/planecrown/mgplanecrown.png
@@ -8243,6 +8252,7 @@ package:
 	file: M20260903T181551 elements/reminderadventureshort/mrreminderadventureshort.png
 	file: M20260903T181551 elements/reminderadventureshort/msreminderadventureshort.png
 	file: M20260903T181551 elements/reminderadventureshort/mureminderadventureshort.png
+	file: A20260903T181552 elements/reminderadventureshort/mwreminderadventureshort.png
 	file: M20260903T181552 elements/reminderadventureshort/rareminderadventureshort.png
 	file: M20260903T181552 elements/reminderadventureshort/rbreminderadventureshort.png
 	file: M20260903T181552 elements/reminderadventureshort/rcreminderadventureshort.png
@@ -15522,7 +15532,6 @@ package:
 	file: M20260901T234130 modules/nodes/rnode.png
 	file: M20260901T234130 modules/nodes/unode.png
 	file: M20260901T234130 modules/nodes/wnode.png
-	file: A20260901T234131 modules/pins/acard.png
 	file: M20260901T234131 modules/pins/bcard.png
 	file: M20260901T234131 modules/pins/ccard.png
 	file: M20260901T234131 modules/pins/gcard.png
@@ -17854,6 +17863,7 @@ package:
 	file: M20260903T181609 textbox.png
 	file: M20260903T181609 type/atype.png
 	file: M20260903T181609 type/btype.png
+	file: A20260903T181610 type/ctype.png
 	file: M20260903T181610 type/gtype.png
 	file: M20260903T181610 type/mtype.png
 	file: M20260903T181610 type/rtype.png
@@ -18176,6 +18186,8 @@ package:
 	file: M20260903T181610 legend/com/ccrown.png
 	file: M20260903T181610 legend/com/gcrown.png
 	file: M20260903T181610 legend/com/mcrown.png
+	file: A20260903T181611 legend/com/rcrown.png
+	file: A20260903T181611 legend/com/ucrown.png
 	file: M20260903T181611 legend/com/wcrown.png
 	file: M20260903T181611 legend/gcrown.png
 	file: M20260903T181611 legend/mcrown.png
@@ -19884,7 +19896,6 @@ package:
 	file: M20260902T204611 covers/acard4.png
 	file: M20260902T204611 covers/artifact_blend_card3.png
 	file: M20260902T204611 covers/artifact_blend_card4.png
-	file: A20260902T204612 covers/bcard3.png
 	file: M20260902T204612 covers/bcard4.png
 	file: M20260902T204612 covers/ccard3.png
 	file: M20260902T204612 covers/ccard4.png
@@ -22461,6 +22472,7 @@ package:
 	file: M20260903T181621 crown/ccrown.png
 	file: M20260903T181621 crown/gcrown.png
 	file: M20260903T181621 crown/mcrown.png
+	file: A20260903T181622 crown/rcrown.png
 	file: M20260903T181622 crown/ucrown.png
 	file: M20260903T181622 crown/wcrown.png
 	file: M20260903T181622 foil_mask.png
@@ -23115,6 +23127,7 @@ package:
 	file: M20260903T181623 nonstamprim/cnonstamprim.png
 	file: M20260903T181623 nonstamprim/glnonstamprim.png
 	file: M20260903T181623 nonstamprim/gnonstamprim.png
+	file: A20260903T181624 nonstamprim/mlnonstamprim.png
 	file: M20260903T181624 nonstamprim/mnonstamprim.png
 	file: M20260903T181624 nonstamprim/rlnonstamprim.png
 	file: M20260903T181624 nonstamprim/rnonstamprim.png
@@ -23393,6 +23406,7 @@ package:
 	file: M20260903T181624 stamp/ub/wstamp.png
 	file: M20260903T181624 stamp/ustamp.png
 	file: M20260903T181624 stamp/wstamp.png
+	file: A20260903T181625 style
 	file: M20260903T181625 textboxes/atextboxes.png
 	file: M20260903T181625 textboxes/btextboxes.png
 	file: M20260903T181625 textboxes/ctextboxes.png
@@ -23661,6 +23675,8 @@ package:
 	file: M20260903T181625 reminder/dark/r.png
 	file: M20260903T181625 reminder/dark/u.png
 	file: M20260903T181625 reminder/dark/w.png
+	file: A20260903T181626 special_blend_pt.png
+	file: A20260903T181626 stamp_border_mask.png
 	file: M20260903T181626 stamprim.png
 	file: M20260903T181626 style
 	file: M20260903T181626 transform/background/colored/normal/a.png
@@ -24011,6 +24027,7 @@ package:
 	file: M20260903T181626 reminder/dark/c.png
 	file: M20260903T181626 reminder/dark/g.png
 	file: M20260903T181626 reminder/dark/m.png
+	file: A20260903T181627 reminder/dark/r.png
 	file: M20260903T181627 reminder/dark/u.png
 	file: M20260903T181627 reminder/dark/w.png
 	file: M20260903T181627 special_blend_pt.png
@@ -24036,6 +24053,82 @@ package:
 	file: M20260903T181627 transform/background/colored/normal/w.png
 	file: M20260903T181627 transform/icon/texture/normal.png
 	file: M20260903T181627 walker_mask.png
+package:
+	name: magic-m15-showcase-kamigawa-samurai.mse-style
+	version: 2024-09-19
+	status: 18
+	file: 20260904T124852 artifact_blend_card.png
+	file: 20260904T124852 artifact_blend_crown.png
+	file: 20260904T124852 artifact_blend_pt.png
+	file: 20260904T124852 border_crown.png
+	file: 20260904T124852 border_mask.png
+	file: 20260904T124852 card/acard.png
+	file: 20260904T124852 card/bcard.png
+	file: 20260904T124852 card/ccard.png
+	file: 20260904T124852 card/frame_mask.png
+	file: 20260904T124852 card/frame_mask_walker.png
+	file: 20260904T124852 card/gcard.png
+	file: 20260904T124852 card/mcard.png
+	file: 20260904T124852 card/rcard.png
+	file: 20260904T124852 card/ucard.png
+	file: 20260904T124852 card/wcard.png
+	file: 20260904T124852 card_sample.png
+	file: 20260904T124852 crown/acrown.png
+	file: 20260904T124852 crown/bcrown.png
+	file: 20260904T124852 crown/ccrown.png
+	file: 20260904T124852 crown/gcrown.png
+	file: 20260904T124852 crown/mcrown.png
+	file: 20260904T124852 crown/rcrown.png
+	file: 20260904T124852 crown/ucrown.png
+	file: 20260904T124852 crown/wcrown.png
+	file: 20260904T124852 foil_mask.png
+	file: 20260904T124852 foil_mask_crown.png
+	file: 20260904T124852 foil_mask_pt.png
+	file: 20260904T124852 foil_mask_round.png
+	file: 20260904T124852 foil_mask_triangle.png
+	file: 20260904T124852 hybrid_blend_card.png
+	file: 20260904T124852 hybrid_blend_crown.png
+	file: 20260904T124852 hybrid_blend_pt.png
+	file: 20260904T124852 image_mask_full.png
+	file: 20260904T124852 multicolor_blend_card.png
+	file: 20260904T124852 multicolor_blend_crown.png
+	file: 20260904T124852 multicolor_blend_pt.png
+	file: 20260904T124852 pt/apt.png
+	file: 20260904T124852 pt/bpt.png
+	file: 20260904T124852 pt/cpt.png
+	file: 20260904T124852 pt/gpt.png
+	file: 20260904T124852 pt/mpt.png
+	file: 20260904T124852 pt/rpt.png
+	file: 20260904T124852 pt/upt.png
+	file: 20260904T124852 pt/wpt.png
+	file: 20260904T124852 reminder/dark/a.png
+	file: 20260904T124852 reminder/dark/b.png
+	file: 20260904T124852 reminder/dark/c.png
+	file: 20260904T124852 reminder/dark/g.png
+	file: 20260904T124852 reminder/dark/m.png
+	file: 20260904T124852 reminder/dark/r.png
+	file: 20260904T124852 reminder/dark/u.png
+	file: 20260904T124852 reminder/dark/w.png
+	file: 20260904T124852 special_blend_pt.png
+	file: 20260904T124852 stamp_mask.png
+	file: 20260904T124852 style
+	file: 20260904T124852 transform/background/colored/normal/a.png
+	file: 20260904T124852 transform/background/colored/normal/b.png
+	file: 20260904T124852 transform/background/colored/normal/c.png
+	file: 20260904T124852 transform/background/colored/normal/g.png
+	file: 20260904T124852 transform/background/colored/normal/m.png
+	file: 20260904T124852 transform/background/colored/normal/r.png
+	file: 20260904T124852 transform/background/colored/normal/u.png
+	file: 20260904T124852 transform/background/colored/normal/w.png
+	file: 20260904T124852 transform/icon/texture/normal/a.png
+	file: 20260904T124852 transform/icon/texture/normal/b.png
+	file: 20260904T124852 transform/icon/texture/normal/c.png
+	file: 20260904T124852 transform/icon/texture/normal/g.png
+	file: 20260904T124852 transform/icon/texture/normal/m.png
+	file: 20260904T124852 transform/icon/texture/normal/r.png
+	file: 20260904T124852 transform/icon/texture/normal/u.png
+	file: 20260904T124852 transform/icon/texture/normal/w.png
+	file: 20260904T124852 walker_mask.png
 package:
 	name: magic-m15-showcase-lorwyn-fable.mse-style
 	version: 2024-10-01
@@ -24121,6 +24214,96 @@ package:
 	file: M20260903T181627 transform/icon/texture/normal/r.png
 	file: M20260903T181627 transform/icon/texture/normal/u.png
 	file: M20260903T181627 transform/icon/texture/normal/w.png
+package:
+	name: magic-m15-showcase-lotr-scroll-saga.mse-style
+	version: 2024-10-01
+	status: 18
+	file: 20260904T124853 alias/a.png
+	file: 20260904T124853 alias/b.png
+	file: 20260904T124853 alias/c.png
+	file: 20260904T124853 alias/g.png
+	file: 20260904T124853 alias/m.png
+	file: 20260904T124853 alias/r.png
+	file: 20260904T124853 alias/u.png
+	file: 20260904T124853 alias/w.png
+	file: 20260904T124853 art_filter.png
+	file: 20260904T124853 bookmark_mask.png
+	file: 20260904T124853 border_mask.png
+	file: 20260904T124853 card/acard.png
+	file: 20260904T124853 card/bcard.png
+	file: 20260904T124853 card/ccard.png
+	file: 20260904T124853 card/gcard.png
+	file: 20260904T124853 card/mcard.png
+	file: 20260904T124853 card/rcard.png
+	file: 20260904T124853 card/ucard.png
+	file: 20260904T124853 card/wcard.png
+	file: 20260904T124853 card_mask.png
+	file: 20260904T124853 card_sample.png
+	file: 20260904T124853 chapter/chapter_1.png
+	file: 20260904T124853 chapter/chapter_2.png
+	file: 20260904T124853 chapter/chapter_3.png
+	file: 20260904T124853 chapter/chapter_4.png
+	file: 20260904T124853 chapter/chapter_5.png
+	file: 20260904T124853 chapter/chapter_6.png
+	file: 20260904T124853 chapter/chapter_7.png
+	file: 20260904T124853 chapter/chapter_blank.png
+	file: 20260904T124853 crown/acrown.png
+	file: 20260904T124853 crown/bcrown.png
+	file: 20260904T124853 crown/ccrown.png
+	file: 20260904T124853 crown/gcrown.png
+	file: 20260904T124853 crown/mcrown.png
+	file: 20260904T124853 crown/rcrown.png
+	file: 20260904T124853 crown/ucrown.png
+	file: 20260904T124853 crown/wcrown.png
+	file: 20260904T124853 foil_mask.png
+	file: 20260904T124853 foil_mask_round.png
+	file: 20260904T124853 foil_mask_triangle.png
+	file: 20260904T124853 gold_bars.png
+	file: 20260904T124853 hybrid_bands.png
+	file: 20260904T124853 nonstamprim/anonstamprim.png
+	file: 20260904T124853 nonstamprim/bnonstamprim.png
+	file: 20260904T124853 nonstamprim/cnonstamprim.png
+	file: 20260904T124853 nonstamprim/gnonstamprim.png
+	file: 20260904T124853 nonstamprim/mnonstamprim.png
+	file: 20260904T124853 nonstamprim/rnonstamprim.png
+	file: 20260904T124853 nonstamprim/unonstamprim.png
+	file: 20260904T124853 nonstamprim/wnonstamprim.png
+	file: 20260904T124853 pt/apt.png
+	file: 20260904T124853 pt/bpt.png
+	file: 20260904T124853 pt/cpt.png
+	file: 20260904T124853 pt/gpt.png
+	file: 20260904T124853 pt/mpt.png
+	file: 20260904T124853 pt/rpt.png
+	file: 20260904T124853 pt/upt.png
+	file: 20260904T124853 pt/wpt.png
+	file: 20260904T124853 reminder/light.png
+	file: 20260904T124853 special_blend_card.png
+	file: 20260904T124853 special_blend_pt.png
+	file: 20260904T124853 stamprim/astamprim.png
+	file: 20260904T124853 stamprim/bstamprim.png
+	file: 20260904T124853 stamprim/cstamprim.png
+	file: 20260904T124853 stamprim/gstamprim.png
+	file: 20260904T124853 stamprim/mstamprim.png
+	file: 20260904T124853 stamprim/rstamprim.png
+	file: 20260904T124853 stamprim/ustamprim.png
+	file: 20260904T124853 stamprim/wstamprim.png
+	file: 20260904T124853 style
+	file: 20260904T124854 transform/background/colored/normal/a.png
+	file: 20260904T124854 transform/background/colored/normal/b.png
+	file: 20260904T124854 transform/background/colored/normal/c.png
+	file: 20260904T124854 transform/background/colored/normal/g.png
+	file: 20260904T124854 transform/background/colored/normal/m.png
+	file: 20260904T124854 transform/background/colored/normal/r.png
+	file: 20260904T124854 transform/background/colored/normal/u.png
+	file: 20260904T124854 transform/background/colored/normal/w.png
+	file: 20260904T124854 transform/icon/texture/normal/a.png
+	file: 20260904T124854 transform/icon/texture/normal/b.png
+	file: 20260904T124854 transform/icon/texture/normal/c.png
+	file: 20260904T124854 transform/icon/texture/normal/g.png
+	file: 20260904T124854 transform/icon/texture/normal/m.png
+	file: 20260904T124854 transform/icon/texture/normal/r.png
+	file: 20260904T124854 transform/icon/texture/normal/u.png
+	file: 20260904T124854 transform/icon/texture/normal/w.png
 package:
 	name: magic-m15-showcase-lotr-scroll.mse-style
 	version: 2024-10-01
@@ -24676,6 +24859,7 @@ package:
 	file: M20260903T181628 stamp/u.png
 	file: M20260903T181628 stamp/w.png
 	file: M20260903T181628 stamp_border_mask.png
+	file: A20260903T181629 style
 	file: M20260903T181629 transform_left/a.png
 	file: M20260903T181629 transform_left/b.png
 	file: M20260903T181629 transform_left/c.png
@@ -25229,6 +25413,7 @@ package:
 	file: M20260903T181629 alias/w.png
 	file: M20260903T181629 card/acard.png
 	file: M20260903T181629 card/bcard.png
+	file: A20260903T181630 card/ccard.png
 	file: M20260903T181630 card/gcard.png
 	file: M20260903T181630 card/mcard.png
 	file: M20260903T181630 card/rcard.png
@@ -27411,6 +27596,7 @@ package:
 	file: M20260901T234136 star/ustar - backup.png
 	file: M20260901T234136 star/ustar - original backup.png
 	file: M20260901T234136 star/ustar.png
+	file: A20260901T234137 star/wstar.png
 	file: M20260901T234137 ucloud.png
 	file: M20260901T234137 upocket.png
 	file: M20260901T234137 wcloud.png
@@ -27984,6 +28170,7 @@ package:
 	file: M20260903T181635 mana_w.png
 	file: M20260903T181635 mana_w_half.png
 	file: M20260903T181635 mana_wb.png
+	file: A20260903T181636 mana_wbr.png
 	file: M20260903T181636 mana_wu.png
 	file: M20260903T181636 mana_wub.png
 	file: M20260903T181636 mana_x.png
@@ -30500,7 +30687,6 @@ package:
 	file: M20260901T233759 mana_dia_s_u.png
 	file: M20260901T233759 mana_dia_s_w.png
 	file: M20260901T233759 mana_dia_u_a.png
-	file: A20260901T233800 mana_dia_u_b.png
 	file: M20260901T233800 mana_dia_u_c.png
 	file: M20260901T233800 mana_dia_u_g.png
 	file: M20260901T233800 mana_dia_u_r.png
@@ -31378,6 +31564,8 @@ package:
 	file: M20260903T181641 mana_circle_r.png
 	file: M20260903T181641 mana_circle_u.png
 	file: M20260903T181641 mana_circle_w.png
+	file: A20260903T181642 mana_e.png
+	file: A20260903T181642 mana_e_half.png
 	file: M20260903T181642 mana_ee.png
 	file: M20260903T181642 mana_eee.png
 	file: M20260903T181642 mana_gg.png
@@ -32072,7 +32260,6 @@ package:
 	file: M20260901T234137 mana_bb.png
 	file: M20260901T234137 mana_bbb.png
 	file: M20260901T234137 mana_bg.png
-	file: A20260901T234138 mana_bgw.png
 	file: M20260901T234138 mana_br.png
 	file: M20260901T234138 mana_brg.png
 	file: M20260901T234138 mana_c.png
@@ -32925,7 +33112,6 @@ package:
 	file: M20260901T234138 cards/375 m15 cut/notched/ilcard.jpg
 	file: M20260901T234138 cards/375 m15 cut/notched/mcard.jpg
 	file: M20260901T234138 cards/375 m15 cut/notched/mlcard.jpg
-	file: A20260901T234139 cards/375 m15 cut/notched/multicolor_blend_card.png
 	file: M20260901T234139 cards/375 m15 cut/notched/rcard.jpg
 	file: M20260901T234139 cards/375 m15 cut/notched/rlcard.jpg
 	file: M20260901T234139 cards/375 m15 cut/notched/ucard.jpg
@@ -33370,7 +33556,6 @@ package:
 	file: M20260901T234139 crowns/375/shifted/borderless/hybrid_blend_crown.png
 	file: M20260901T234139 crowns/375/shifted/borderless/mcrown.png
 	file: M20260901T234139 crowns/375/shifted/borderless/multicolor_blend_crown.png
-	file: A20260901T234140 crowns/375/shifted/borderless/rcrown.png
 	file: M20260901T234140 crowns/375/shifted/borderless/ucrown.png
 	file: M20260901T234140 crowns/375/shifted/borderless/wcrown.png
 	file: M20260901T234140 crowns/375/shifted/ccrown.png
@@ -34162,7 +34347,6 @@ package:
 	file: M20260901T233801 pinlines/744x1039/m15/normal/nameline_right/trim/spree.png
 	file: M20260901T233801 pinlines/744x1039/m15/normal/nameline_right/trim/spree_shadow.png
 	file: M20260901T233801 pinlines/744x1039/m15/normal/nameline_right/trim/transform.png
-	file: A20260901T233802 pinlines/744x1039/m15/normal/nameline_right/trim/transform_shadow.png
 	file: M20260901T233802 pinlines/744x1039/m15/normal/nameline_right/trim_alias/base.png
 	file: M20260901T233802 pinlines/744x1039/m15/normal/nameline_right/trim_alias/base_shadow.png
 	file: M20260901T233802 pinlines/744x1039/m15/normal/nameline_right/trim_alias/modal.png
@@ -41056,8 +41240,6 @@ package:
 	file: M20260901T233804 watermarks/dark/watermark_golgari2_dark.png
 	file: M20260901T233804 watermarks/dark/watermark_golgari_dark.png
 	file: M20260901T233804 watermarks/dark/watermark_grixis.png
-	file: A20260901T233805 watermarks/dark/watermark_grixis_dark.png
-	file: A20260901T233805 watermarks/dark/watermark_gruul.png
 	file: M20260901T233805 watermarks/dark/watermark_gruul2.png
 	file: M20260901T233805 watermarks/dark/watermark_gruul2_dark.png
 	file: M20260901T233805 watermarks/dark/watermark_gruul_dark.png
@@ -41417,21 +41599,21 @@ package:
 package:
 	name: pl.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124207 locale
-	file: 20260904T124207 pl.png
+	status: 50
+	file: M20260904T124207 locale
+	file: M20260904T124207 pl.png
 package:
 	name: pt-br.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124208 br.png
-	file: 20260904T124208 locale
+	status: 50
+	file: M20260904T124208 br.png
+	file: M20260904T124208 locale
 package:
 	name: ru.mse-locale
 	version: 2026-02-28
-	status: 18
-	file: 20260904T124209 locale
-	file: 20260904T124209 ru.png
+	status: 50
+	file: M20260904T124209 locale
+	file: M20260904T124209 ru.png
 package:
 	name: saga-forum.mse-export-template
 	version: 2010-05-11
