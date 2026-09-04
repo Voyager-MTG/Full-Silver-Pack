@@ -447,27 +447,27 @@ jobs:
             #### Copy the installer list to the Installer-Pack repo
             shutil.copy2(installer_list, installer_repo / installer_list.name)
 
-      - name: Commit and push Main-Magic-Pack
-        working-directory: main-pack
-        shell: pwsh
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_SHA: ${{ github.sha }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    #   - name: Commit and push Main-Magic-Pack
+    #     working-directory: main-pack
+    #     shell: pwsh
+    #     env:
+    #       GITHUB_REPOSITORY: ${{ github.repository }}
+    #       GITHUB_SHA: ${{ github.sha }}
+    #     run: |
+    #       git config user.name "github-actions[bot]"
+    #       git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add .
+    #       git add .
 
-          if (git diff --cached --quiet) {
-              Write-Host "No changes to commit."
-              exit 0
-          }
+    #       if (git diff --cached --quiet) {
+    #           Write-Host "No changes to commit."
+    #           exit 0
+    #       }
 
-          $commitUrl = "https://github.com/$env:GITHUB_REPOSITORY/commit/$env:GITHUB_SHA"
+    #       $commitUrl = "https://github.com/$env:GITHUB_REPOSITORY/commit/$env:GITHUB_SHA"
 
-          git commit -m "[Job] Sync with Full-Magic-Pack" -m "Triggered by $commitUrl"
-          git push
+    #       git commit -m "[Job] Sync with Full-Magic-Pack" -m "Triggered by $commitUrl"
+    #       git push
 
       - name: Commit and push Basic-Magic-Pack
         working-directory: basic-pack
