@@ -18,24 +18,17 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Checkout Main-Magic-Pack
-        uses: actions/checkout@v6
-        with:
-          repository: MagicSetEditorPacks/M15-Magic-Pack
-          token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
-          path: main-pack
-
       - name: Checkout Basic-Magic-Pack
         uses: actions/checkout@v6
         with:
-          repository: MagicSetEditorPacks/Basic-M15-Magic-Pack
+          repository: Voyager-MTG/Silver-MSE
           token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
           path: basic-pack
 
       - name: Checkout Installer-Pack
         uses: actions/checkout@v6
         with:
-          repository: MagicSetEditorPacks/Installer-Pack
+          repository: Voyager-MTG/Silver-MSE-Installers
           token: ${{ secrets.SYNCING_ACTIONS_TOKEN }}
           path: installer-pack
 
