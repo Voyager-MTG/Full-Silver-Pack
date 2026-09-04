@@ -134,6 +134,7 @@ script:
 			+ ( if contains(color, match:"black") or contains(cost, match:"B") then "B" else "" )
 			+ ( if contains(color, match:"red") or contains(cost, match:"R") then "R" else "" )
 			+ ( if contains(color, match:"green") or contains(cost, match:"G") then "G" else "" )
+			+ ( if contains(color, match:"silver") or contains(cost, match:"I") then "I" else "" )
 		)
 	}
 	card_color_1 := { get_card_color(text:card.text, type:card.type, color:card.card_color, cost:card.casting_cost) }
@@ -196,8 +197,8 @@ script:
 	}
 	inline_replacement := replace@(match:"<sym(-auto)?>([^<]+)</sym(-auto)?>", replace:{mana_cost_replacement_css(_2)})
 	mana_cost_replacement := replace@(match:"([+=-])([0-9X])", replace:{ if _2 == "0" or _2 == "=" then "["+_2+"]" else "["+_1+_2+"]"})+
-		replace@(match:"([0-9HWUBRGSCV])/([WUBRGCSV])(/([WUBRGCSV]))?", replace:{"\{"+_1+"/"+_2+_3+"\}"})+
-		replace@(match:"([½∞XYZWUBRGCSTQVJFENAH])", in_context:"(?<![\{[+-])(?<!/)<match>", replace:{"\{"+_1+"\}"})+
+		replace@(match:"([0-9HWUBRGISCV])/([WUBRGICSV])(/([WUBRGICSV]))?", replace:{"\{"+_1+"/"+_2+_3+"\}"})+
+		replace@(match:"([½∞XYZWUBRGICSTQVJFENAH])", in_context:"(?<![\{[+-])(?<!/)<match>", replace:{"\{"+_1+"\}"})+
 		replace@(match:"([1-9]?[0-9]+)", in_context:"(?<![\{[+-])(?<!\\/)<match>", replace:{"\{"+_1+"\}"})+
 		replace@(match:"V", replace:{v_rep("V")})
 	mana_cost_replacement_css := mana_cost_replacement +
@@ -215,6 +216,7 @@ script:
 		+ (if contains(card.type, match:"Swamp") then "B" else "")
 		+ (if contains(card.type, match:"Mountain") then "R" else "")
 		+ (if contains(card.type, match:"Forest") then "G" else "")
+		+ (if contains(card.type, match:"Fault") then "I" else "")
 	}
 	merge_ci := {
 		base := input

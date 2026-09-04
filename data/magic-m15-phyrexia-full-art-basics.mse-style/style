@@ -142,6 +142,7 @@ init script:
 		swamp:		"b",
 		mountain:	"r",
 		forest:		"g",
+		fault:		"i",
 		wastes:		"c",
 		none:		"none"
 	]
@@ -151,6 +152,7 @@ init script:
 		swamp:		"black",
 		mountain:	"red",
 		forest:		"green",
+		fault:		"silver",
 		wastes:		"colorless",
 		none:		"",
 		"": 		""

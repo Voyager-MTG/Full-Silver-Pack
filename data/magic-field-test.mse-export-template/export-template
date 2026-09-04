@@ -150,7 +150,7 @@ script:
 		replace@(match:"V", replace:{"\{"+v_rep("V")+"\}"})
 
 	lackey_bot_mana_filter := replace@(match:"<sym(-auto)?>([0-9WUBRGCSHEQTXYZEDVI/]+)</sym(-auto)?>", replace:{"\{"+_2+"}"})+
-		replace@(match:"([0-9HSCWUBRGXYZEDV/])", in_context:"\{[0-9HSCWUBRGXYZEDVI/]*<match>[0-9HSCWUBRGXYZEDVI/]*}", replace:{"\{"+v_rep(_1)+"}"})+
+		replace@(match:"([0-9HSCWUBRGIXYZEDV/])", in_context:"\{[0-9HSCWUBRGXYZEDVI/]*<match>[0-9HSCWUBRGXYZEDVI/]*}", replace:{"\{"+v_rep(_1)+"}"})+
 		replace@(match:"}\{/}\{", replace:"/")+
 		replace@(match:"\{([0-9])}\{([0-9])}", replace:{"\{"+_1+_2+"}"})+
 		replace@(match:"\{\{", replace:"\{")+
@@ -164,6 +164,7 @@ script:
 		else if cond == "black" then "\{Black\} "
 		else if cond == "red" then "\{Red\} "
 		else if cond == "green" then "\{Green\} "
+		else if cond == "silver" then "\{Silver\} "
 		else if cond == "white, blue" then "\{White/Blue\} "
 		else if cond == "blue, black" then "\{Blue/Black\} "
 		else if cond == "black, red" then "\{Black/Red\} "
@@ -174,6 +175,18 @@ script:
 		else if cond == "black, green" then "\{Black/Green\} "
 		else if cond == "white, red" then "\{Red/White\} "
 		else if cond == "blue, green" then "\{Green/Blue\} "
+		## 2 color silver combos
+		else if cond == "white, silver" then "\{White/Silver\} "
+		else if cond == "blue, silver" then "\{Blue/Silver\} "
+		else if cond == "black, silver" then "\{Black/Silver\} "
+		else if cond == "red, silver" then "\{Red/Silver\} "
+		else if cond == "green, silver" then "\{Green/Silver\} "
+		else if cond == "white, silver" then "\{White/Silver\} "
+		else if cond == "blue, silver" then "\{Blue/Silver\} "
+		else if cond == "black, silver" then "\{Black/Silver\} "
+		else if cond == "red, silver" then "\{Red/Silver\} "
+		else if cond == "green, silver" then "\{Green/Silver\} "
+		## Regular 3 color combos
 		else if cond == "white, black, red" then "\{White/Black/Red\} "
 		else if cond == "blue, red, green" then "\{Blue/Red/Green\} "
 		else if cond == "white, black, green" then "\{Black/Green/White\} "
@@ -184,6 +197,34 @@ script:
 		else if cond == "black, red, green" then "\{Black/Red/Green\} "
 		else if cond == "white, red, green" then "\{Red/Green/White\} "
 		else if cond == "white, blue, green" then "\{Green/White/Blue\} "
+		## Silver 3 color combos
+		else if cond == "white, blue, silver" then "\{White/Blue/Silver\} "
+		else if cond == "blue, black, silver" then "\{Blue/Black/Silver\} "
+		else if cond == "black, red, silver" then "\{Black/Red/Silver\} "
+		else if cond == "red, green, silver" then "\{Red/Green/Silver\} "
+		else if cond == "white, green, silver" then "\{Green/White/Silver\} "
+		else if cond == "white, black, silver" then "\{White/Black/Silver\} "
+		else if cond == "blue, red, silver" then "\{Blue/Red/Silver\} "
+		else if cond == "black, green, silver" then "\{Black/Green/Silver\} "
+		else if cond == "white, red, silver" then "\{Red/White/Silver\} "
+		else if cond == "blue, green, silver" then "\{Green/Blue/Silver\} "
+		## Regular 4 color combos
+		else if cond == "blue, black, red, green" then "\{Blue/Black/Red/Green\}"
+		else if cond == "white, blue, black, red" then "\{White/Blue/Black/Red\}"
+		else if cond == "black, red, green, white" then "\{Black/Red/Green/White\}"
+		else if cond == "red, green, white, blue, " then "\{Red/Green/Blue/White\}"
+		else if cond == "green, white, blue, black" then "\{Green/White/Blue/Black\}"
+		## Silver 4 color combos
+		else if cond == "white, black, red, silver" then "\{White/Black/Red/Silver\} "
+		else if cond == "blue, red, green, silver" then "\{Blue/Red/Green/Silver\} "
+		else if cond == "white, black, green, silver" then "\{Black/Green/White/Silver\} "
+		else if cond == "white, blue, red, silver" then "\{Red/White/Blue/Silver\} "
+		else if cond == "blue, black, green, silver" then "\{Green/Blue/Black/Silver\} "
+		else if cond == "white, blue, black, silver" then "\{White/Blue/Black/Silver\} "
+		else if cond == "blue, black, red, silver" then "\{Blue/Black/Red/Silver\} "
+		else if cond == "black, red, green, silver" then "\{Black/Red/Green/Silver\} "
+		else if cond == "white, red, green, silver" then "\{Red/Green/White/Silver\} "
+		else if cond == "white, blue, green, silver" then "\{Green/White/Blue/Silver\} "
 		else ""
 	}
 	silver_patch := {

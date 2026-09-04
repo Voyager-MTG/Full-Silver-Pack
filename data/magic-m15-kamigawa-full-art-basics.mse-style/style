@@ -138,7 +138,11 @@ init script:
 		"red,green": true,
 		"red,white": true,
 		"green,white": true,
-		"green,blue": true
+		"silver,white": true,
+		"silver,blue": true,
+		"silver,black": true,
+		"silver,red": true,
+		"silver,green": true
 	]	
 	super_type_filter_default := { 
 		if two_types() then "Land" else "Basic Land"
@@ -165,6 +169,7 @@ init script:
 		swamp:		"b",
 		mountain:	"r",
 		forest:		"g",
+		fault:		"i",
 		wastes:		"c",
 		none:		"none"
 	]
@@ -174,6 +179,7 @@ init script:
 		swamp:		"black",
 		mountain:	"red",
 		forest:		"green",
+		fault:		"silver",
 		wastes:		"colorless",
 		none:		"",
 		"": 		""

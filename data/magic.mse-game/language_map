@@ -838,6 +838,7 @@ languages := [
 		is_swamp          : match@(match: "(?i)Swamp")
 		is_mountain       : match@(match: "(?i)Mountain")
 		is_forest         : match@(match: "(?i)Forest")
+		is_fault         : match@(match: "(?i)Fault")
 		is_wastes         : match@(match: "(?i)Wastes")
 
 		is_class		  : match@(match: "(?i)Class")
@@ -865,17 +866,19 @@ languages := [
 		is_black          : match@(match: "(?i)black")
 		is_red            : match@(match: "(?i)red")
 		is_green          : match@(match: "(?i)green")
+		is_silver         : match@(match: "(?i)silver")
 		is_colorless      : match@(match: "(?i)colorless")
 
 		is_cda_colorless  : match@(match: "(?i)is colorless")
 		is_cda_all_colors : match@(match: "(?i)is all colors")
-		cda_colors        : filter_text@(match: "is (white|blue|black|red|green)((,|, and| and) (white|blue|black|red|green))*")
+		cda_colors        : filter_text@(match: "is (white|blue|black|red|green|silver)((,|, and| and) (white|blue|black|red|green|silver))*")
 
 		white             : "White"
 		blue              : "Blue"
 		black             : "Black"
 		red               : "Red"
 		green             : "Green"
+		silver            : "Silver"
 		purple            : "Purple"
 		pink              : "Pink"
 		yellow            : "Yellow"

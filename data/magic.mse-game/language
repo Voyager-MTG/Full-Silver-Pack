@@ -1363,7 +1363,7 @@ cost_parameter_dash :=
 }
 localized_phy_reminder :=
 {
-	phy_matches := break_text(card.casting_cost, match:"H(/[WUBRGC])*")
+	phy_matches := break_text(card.casting_cost, match:"H(/[WUBRGIC])*")
 	if length(phy_matches) < 1 then "" else (
 	multiple := length(phy_matches) > 1
 	phy_matches := make_list_unique(reverse_list(sort_list(phy_matches, order_by: length)))		#First symbol is used for reminder text. Prefer using hybrid mana.

@@ -459,7 +459,7 @@ symbol:
 		color: rgb(0,0,0)
 symbol:
 	image: mana_circle.png
-	code: [0-9]+(?!/[WUBRGSTQ2])|.
+	code: [0-9]+(?!/[WUBRGISTQ2])|.
 	regex: yes
 	draw text: 0
 	text margin left:   .26

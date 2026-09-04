@@ -140,12 +140,13 @@ init script:
 	pure_colors :=
 	{
 		sort_text(
-			order: if card_is_wedge(input) then "(wbgur)" else "(wubrg)",
+			order: if card_is_wedge(input) then "(wbguri)" else "i(wubrg)",
 			(if chosen(card.card_color, choice:"white")	then "w") +
 			(if chosen(card.card_color, choice:"blue")	then "u") +
 			(if chosen(card.card_color, choice:"black")	then "b") +
 			(if chosen(card.card_color, choice:"red")	then "r") +
-			(if chosen(card.card_color, choice:"green")	then "g")
+			(if chosen(card.card_color, choice:"green")	then "g") +
+			(if chosen(card.card_color, choice:"silver")	then "i")
 		)
 	}
 	pt_colors := { if styling.PT_color_scheme == "canon" then pt_colors_canon() else styling.PT_color_scheme }

@@ -31,6 +31,7 @@ watermark_colors := {
 	else if trim_colors(check_colors) == "black"			then	"bb"
 	else if trim_colors(check_colors) == "red"			then	"rr"
 	else if trim_colors(check_colors) == "green"			then	"gg"
+	else if trim_colors(check_colors) == "silver"			then	"ii"
 	else if contains(check_colors, match:"multi")		or
 			contains(check_colors, match:"hybrid")	or
 			contains(check_colors, match:", land")	then	hybrid_color(face:face)
@@ -51,6 +52,11 @@ hybrid_color := {
 	else if	trimmed == "black, red"				then	"br"
 	else if	trimmed == "black, green"			then	"bg"
 	else if	trimmed == "red, green"				then	"rg"
+	else if	trimmed == "silver, white"				then	"iw"
+	else if	trimmed == "silver, blue"				then	"iu"
+	else if	trimmed == "silver, black"				then	"ib"
+	else if	trimmed == "silver, red"				then	"ir"
+	else if	trimmed == "silver, green"				then	"ig"
 	else if	trimmed == "white, blue, reversed"	then	"uw"
 	else if	trimmed == "white, black, reversed"	then	"bw"
 	else if	trimmed == "white, red, reversed"	then	"wr"
@@ -61,6 +67,11 @@ hybrid_color := {
 	else if	trimmed == "black, red, reversed"	then	"rb"
 	else if	trimmed == "black, green, reversed"	then	"bg"
 	else if	trimmed == "red, green, reversed"	then	"gr"
+	else if	trimmed == "silver, white, reversed"	then	"wi"
+	else if	trimmed == "silver, blue, reversed"		then	"ui"
+	else if	trimmed == "silver, black, reversed"	then	"bi"
+	else if	trimmed == "silver, red, reversed"		then	"ri"
+	else if	trimmed == "silver, green, reversed"	then	"gi"
 	else												"mm"
 }@(face:"")
 ########################################################################
@@ -872,12 +883,13 @@ stamp_hybrid := [
 # Putting it all together.
 ########################################################################
 blend_colors := {
-	colors := sort_text( order: if card_is_wedge(input) then "(wbgur)" else "(wubrg)"
+	colors := sort_text( order: if card_is_wedge(input) then "(wbguri)" else "i(wubrg)"
 					, (if chosen(choice:"white"	)	then "w")
 					+ (if chosen(choice:"blue"	)	then "u")
 					+ (if chosen(choice:"black"	)	then "b")
 					+ (if chosen(choice:"red"	)	then "r")
-					+ (if chosen(choice:"green"	)	then "g"))
+					+ (if chosen(choice:"green"	)	then "g")
+					+ (if chosen(choice:"silver"	)	then "i"))
 	if multi and (hybrid or colors == "") then (
 		colors := colors + "m"
 	)
@@ -922,8 +934,8 @@ color_background := {
 	
 	# Determine background (allows styles to hook something else here)
 	# This is implicitly passed the following parameters: type, shape, colors, color_count, base_hybrid, land, multi, hybrid, artifact, multicolor_blend, hybrid_blend, artifact_blend
-	color_combination(folder:folder, blend_type:blend_type)
-}@(folder: "", blend_type: "", multicolor_blend: "mask", hybrid_blend: "mask", artifact_blend: "mask")
+	color_combination(folder:folder, blend_type:blend_type, masks_folder:masks_folder)
+}@(folder: "", blend_type: "", multicolor_blend: "mask", hybrid_blend: "mask", artifact_blend: "mask",masks_folder:"")
 
 color_combination := {
 	# does this have an override blend_type?
@@ -1041,11 +1053,11 @@ color_combination := {
 	## if we have a mode, blend that, otherwise use our base gradient
 	if mode == "" then base() else conditional_masked_blend()
 	
-}@(folder: "", blend_type:"")
+}@(folder: "", blend_type:"",masks_folder:"")
 
 conditional_masked_blend :=
 {
-	mask := "{folder}{mode}_blend_{blend_type}.png"
+	mask := "{folder}{masks_folder}{mode}_blend_{blend_type}.png"
 	mode :=	if		mode == "multicolor" then	multicolor_blend
 			else if	mode == "artifact" then		artifact_blend
 			else								hybrid_blend
@@ -1157,12 +1169,13 @@ font_color_positions := [
 font_white	:= {
 	hybrid :=		chosen(choice:"hybrid"	)
 	artifact :=		chosen(choice:"artifact"	)
-	colors :=		sort_text( order: "(wubrg)"
+	colors :=		sort_text( order: "(wubrgi)"
 				,	(if chosen(choice:"white"	)	then "w")
 				+	(if chosen(choice:"blue"	)	then "u")
 				+	(if chosen(choice:"black"	)	then "b")
 				+	(if chosen(choice:"red"		)	then "r")
-				+	(if chosen(choice:"green"	)	then "g"))
+				+	(if chosen(choice:"green"	)	then "g")
+				+	(if chosen(choice:"silver"	)	then "i"))
 				+	(if artifact				then "a")
 	font_colors_white(
 		if		chosen(choice:"land")			then "l"

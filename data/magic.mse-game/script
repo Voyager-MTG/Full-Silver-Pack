@@ -34,7 +34,7 @@ include file: language
 include file: statistics_script
 include file: /magic-blends.mse-include/new-blends
 ############################################################## Versioning
-version_date := {"2026-09-02 Template Pack 4.0.1: MSE 2.6, Mainframe Battles, and More - LEGENDNAME fix"}
+version_date := {"2025-02-01 Template Pack 3.1.0: Mainframe Battles"}
 version := version_date
 ############################################################## Common filters
 ############################################################## Utility
@@ -456,7 +456,7 @@ get_linked_card_name :=
 
 ############################################################## For the user
 #### Remove card codes
-cc_filter := replace@(match:"^[CURMSL][WUBRGMZACL][0-9]+ ?[-—]? ?", replace:"")
+cc_filter := replace@(match:"^[CURMSL][WUBRGIMZACL][0-9]+ ?[-—]? ?", replace:"")
 has_alchemy := contains@(match:"alchemy")
 strip_card_codes := {
 	save := input
@@ -597,6 +597,7 @@ colors_from_mana_symbols := {
 	if contains(input, match:"B") then str := str + ["black"]
 	if contains(input, match:"R") then str := str + ["red"]
 	if contains(input, match:"G") then str := str + ["green"]
+	if contains(input, match:"I") then str := str + ["silver"]
 	
 	join(str, sep:", ")
 }
@@ -665,25 +666,25 @@ crop_multi_image := {
 
 ############################################################## Sorting mana symbols
 #### correctly sort a mana symbol (no guild mana)
-mana_sort := sort_text@(order: "\\?XYZI[0123456789]VHSFCAI(EKPLO)(WUBRG)") 
+mana_sort := sort_text@(order: "\\?XYZI[0123456789]VHSFCA(EKPLO)(WUBRGI)") 
 #### correctly sort wedge mana
-mana_sort_wedge := sort_text@(order: "\\?XYZI[0123456789]VHSFCAI(EPOKL)(WBGUR)")
+mana_sort_wedge := sort_text@(order: "\\?XYZI[0123456789]VHSFCA(EPOKL)(WBGURI)")
 #### sort nothing
-mana_unsort := sort_text@(order:"[/\\?XYZI0123456789VHSCAIEKPLOMWUBRG]")
+mana_unsort := sort_text@(order:"[/\\?XYZ0123456789VHSCAIEKPLOMWUBRGI]")
 #### correctly sort guild mana
-mana_sort_guild := sort_text@(order: "[\\?XYZI01234567890VHSFCAIEKPLOWUBRG/|]") +
+mana_sort_guild := sort_text@(order: "[\\?XYZ01234567890VHSFCAIEKPLOWUBRGI/|]") +
 		replace@(
 			#### No lookbehind :(
 			#match: "(?<!/)(./.|././.|./././.|.[|])(?!/)",
 			match: "./.|././.|./././.|.[|]",
 			in_context: "(^|[^/])<match>($|[^/])",
-			replace: {sort_text(order:"in_place((WUBRG))")}
+			replace: {sort_text(order:"in_place((WUBRGI))")}
 		)
 #### mana filter helpers
 mana_has_guild := match@(match: "[/|]") #### Is there guild or half mana in the input?
-mana_is_wedge := { chosen(set.mana_cost_sorting, choice: "tarkir wedge sorting") and ( number_of_items(in: sort_text(order:"<WUBRG>", input), filter: "<WUBRG>") == 3 ) }
+mana_is_wedge := { chosen(set.mana_cost_sorting, choice: "tarkir wedge sorting") and ( number_of_items(in: sort_text(order:"<WUBRGI>", input), filter: "<WUBRGI>") == 3 ) }
 mana_has_wedge := {  
-	wedge_check := sort_text(order:"<WUBRG>", input)
+	wedge_check := sort_text(order:"<WUBRGI>", input)
 	mana_is_wedge() and (wedge_check == "WUR" or wedge_check == "WBR" or wedge_check == "WBG" or wedge_check == "UBG" or wedge_check == "URG")
 }
 
@@ -751,6 +752,7 @@ colorless_color := {
 	else if cc == "black" then "b"
 	else if cc == "red" then "r"
 	else if cc == "green" then "g"
+	else if cc == "silver" then "i"
 	else "c"
 }
 
@@ -781,6 +783,7 @@ color_name := {
 	else if input == "B" then "black"
 	else if input == "R" then "red"
 	else if input == "G" then "green"
+	else if input == "I" then "silver"
 	else                     ""
 }
 mana_name := {
@@ -789,6 +792,7 @@ mana_name := {
 	else if input == "black" then "B"
 	else if input == "red" then "R"
 	else if input == "green" then "G"
+	else if input == "silver" then "I"
 	else                     "C"
 }
 color_names_1 := { color_name(colors.0) }
@@ -797,7 +801,7 @@ color_names_3 := { color_name(colors.0) + ", " + color_name(colors.1) + ", " + c
 color_names_4 := { color_name(colors.0) + ", " + color_name(colors.1) + ", " + color_name(colors.2) + ", " + color_name(colors.3) }
 color_names_5 := { color_name(colors.0) + ", " + color_name(colors.1) + ", " + color_name(colors.2) + ", " + color_name(colors.3) + ", " + color_name(colors.4) }
 #### color based on mana cost, input == a mana cost
-color_filter := sort_text@(order: "<WUBRG>")
+color_filter := sort_text@(order: "<WUBRGI>")
 color_filterH := sort_text@(order: "</>")
 mana_to_color := {
 	count := number_of_items(in: colors)
@@ -847,7 +851,7 @@ color_text_filter :=
 	) +
 	#### keep only mana
 	filter_text@(match: "<sym[^>]*>([^<]+)") + color_filter;
-#### get the land frame for a "WUBRG"-style input.
+#### get the land frame for a "WUBRGI"-style input.
 land_multicolor := {
 	count := number_of_items(in: colors)
 	if      count == 0 then "land"
@@ -862,6 +866,7 @@ land_to_color := {
 	else if watermark == "mana symbol black" then "black, land"
 	else if watermark == "mana symbol red"   then "red, land"
 	else if watermark == "mana symbol green" then "green, land"
+	else if watermark == "mana symbol silver" then "silver, land"
 	else land_multicolor(colors:color_text_filter(input: rules))
 }@(rules:card.rule_text)
 
@@ -869,10 +874,10 @@ land_to_color := {
 text_to_color := {
 	#### Note: running filter_text is quite slow, do a quick 'contains' check first
 	if contains(match: card_name + " is") then (
-		text := filter_text(match: "is (colorless|all colors|((blue|white|green|red|black)((,|,? and) (blue|white|green|red|black))*))", in_context: regex_escape(card_name)+"(</[-a-z]+>)* <match>\\.")
+		text := filter_text(match: "is (colorless|all colors|((blue|white|green|red|black|silver)((,|,? and) (blue|white|silver|green|red|black))*))", in_context: regex_escape(card_name)+"(</[-a-z]+>)* <match>\\.")
 		if text != "" then (
 			if contains(text, match: "all colors") then (
-				colors := "WUBRG"
+				colors := "WUBRGI"
 				if land == true then land_multicolor()
 				else mana_to_color(hybrid: "")
 			) else (
@@ -882,6 +887,7 @@ text_to_color := {
 				if contains(text, match: "black") then colors := colors + "B"
 				if contains(text, match: "red")   then colors := colors + "R"
 				if contains(text, match: "green") then colors := colors + "G"
+				if contains(text, match: "silver") then colors := colors + "I"
 				if land == true then land_multicolor()
 				else mana_to_color(hybrid: "")
 			)
@@ -904,7 +910,7 @@ card_color := {
 	else text_color
 };
 #### Number of colors in a card_color
-card_color_color_count := count_chosen@(choices: "white,blue,black,red,green,artifact")
+card_color_color_count := count_chosen@(choices: "white,blue,black,red,green,silver,artifact")
 #### Clean up color field
 card_color_filter := {
 	colors := card_color_color_count()
@@ -938,6 +944,7 @@ card_color_to_letters := {
 	+(if contains(color_string, match:"black") then "B" else "")
 	+(if contains(color_string, match:"red") then "R" else "")
 	+(if contains(color_string, match:"green") then "G" else "")
+	+(if contains(color_string, match:"silver") then "I" else "")
 }
 card_color_field := { if input <= 1 then card.card_color else card["card_color_" + input] }
 
@@ -999,10 +1006,11 @@ color_of_card := {
 		else if chosen(choice:"black", card_color) then "D"              #### Black
 		else if chosen(choice:"red", card_color)   then "E"              #### Red
 		else if chosen(choice:"green", card_color) then "F"              #### Green
+		else if chosen(choice:"silver", card_color) then "FZ"              #### Silver
 		else                                            "J"              #### Artifact
 	) else (
 		                                                                 #### Cards with costs.
-		colors := sort_text(casting_cost, order: "<WUBRG>")
+		colors := sort_text(casting_cost, order: "<WUBRGI>")
 		if colors == "" and artifact then "J"    						#### Artifact
 		else if colors == ""  then "A"                                   #### Clear Colorless
 		else if colors == "W" then "B"                                   #### White
@@ -1010,6 +1018,7 @@ color_of_card := {
 		else if colors == "B" then "D"                                   #### Black
 		else if colors == "R" then "E"                                   #### Red
 		else if colors == "G" then "F"                                   #### Green
+		else if colors == "I" then "FZ"                                   #### Silver
 		else if is_hybrid_cost() then hybrid_color_pair_sort()           #### Hybrid (by pairs)
 		else if contains(casting_cost, match:"/") and artifact then "I"  #### Hybrid Artifacts
 		else                       multi_color_pair_sort()               #### Multicolor (by pairs)
@@ -1019,7 +1028,7 @@ is_null_cost := { input == "" or input == "0" }
 is_multicolor := { chosen(choice: "multicolor") and input != "artifact, multicolor" }
 is_hybrid_cost := { 
 	casting_cost := card.casting_cost
-	contains(casting_cost, match: "W/") or contains(casting_cost, match: "U/") or contains(casting_cost, match: "B/") or contains(casting_cost, match: "R/") or contains(casting_cost, match: "G/")
+	contains(casting_cost, match: "W/") or contains(casting_cost, match: "U/") or contains(casting_cost, match: "B/") or contains(casting_cost, match: "R/") or contains(casting_cost, match: "G/") or contains(casting_cost, match:"I/")
 }
 basic_land_sort := {
 	name := card.name
@@ -1028,10 +1037,11 @@ basic_land_sort := {
 	else if contains(name, match:"Swamp")    then "MD"      #### Swamps
 	else if contains(name, match:"Mountain") then "ME"      #### Mountains
 	else if contains(name, match:"Forest")   then "MF"      #### Forests
+	else if contains(name, match:"Fault")    then "MG"      #### Faults
 	else                                               "MA"      #### other basic lands
 }
 hybrid_color_pair_sort := {
-	colors := sort_text(casting_cost, order: "<WUBRG>")
+	colors := sort_text(casting_cost, order: "<WUBRGI>")
 	if not set.sort_hybrid_in_pairs then "HK"
 	else if colors == "WU" then "HA"
 	else if colors == "UB" then "HB"
@@ -1046,7 +1056,7 @@ hybrid_color_pair_sort := {
 	else "HK"
 }
 multi_color_pair_sort := {
-	colors := sort_text(casting_cost, order: "<WUBRG>")
+	colors := sort_text(casting_cost, order: "<WUBRGI>")
 	if not set.sort_multicolor_in_pairs then "GK"
 	else if colors == "WU" then "GA"
 	else if colors == "UB" then "GB"
@@ -1058,8 +1068,13 @@ multi_color_pair_sort := {
 	else if colors == "BG" then "GH"
 	else if colors == "WR" then "GI"
 	else if colors == "UG" then "GJ"
-	else if contains(card.casting_cost, match:"/") then "GL"
-	else "GK"
+	else if colors == "IW" then "GK"
+	else if colors == "IU" then "GL"
+	else if colors == "IB" then "GM"
+	else if colors == "IR" then "GN"
+	else if colors == "IG" then "GO"
+	else if contains(card.casting_cost, match:"/") then "GP"
+	else "GQ"
 }
 
 #### Sort the card into its rarity tier
@@ -1201,11 +1216,11 @@ rarity_code := {
 is_unsorted := { false }
 ############################################################## Statistics utilities
 #### Converted mana cost
-is_half_mana :=    match@(match: "1/2|[|][WUBRGS]")
+is_half_mana :=    match@(match: "1/2|[|][WUBRGIS]")
 is_half_generic := match@(match: "1/2")
-is_colored_mana := match@(match: "[WUBRG]")
+is_colored_mana := match@(match: "[WUBRGI]")
 only_numbers :=    filter_text@(match: "^[0123456789]+")
-cmc_split :=       break_text@(match: "(?ix) 1/2 | [|][WUBRGC] | TK | [0-9](/[WUBRGCVHSCEKPLOTQ2]) | [0-9]+(?!/[WUBRGCVHSCEKPLOTQ2]) | [WUBRGCVHS0-9](/[WUBRGCVHS])\{0,4} ")
+cmc_split :=       break_text@(match: "(?ix) 1/2 | [|][WUBRGIC] | TK | [0-9](/[WUBRGICVHSCEKPLOTQ2]) | [0-9]+(?!/[WUBRGICVHSCEKPLOTQ2]) | [WUBRGICVHS0-9](/[WUBRGICVHS])\{0,4} ")
 cmc := {to_number(
 	for each sym in cmc_split(to_text()) do (
 		numbers := only_numbers(sym)
@@ -1228,7 +1243,8 @@ write_wubrg := {
 	(if match(input, match:"blue") then "U" else "")+
 	(if match(input, match:"black") then "B" else "")+
 	(if match(input, match:"red") then "R" else "")+
-	(if match(input, match:"green") then "G" else "")
+	(if match(input, match:"green") then "G" else "")+
+	(if match(input, match:"silver") then "I" else "")
 }
 colored_mana := {to_number(
 	for each sym in cmc_split(to_text()) do (
@@ -1248,7 +1264,7 @@ generic_mana := {to_number(
 }
 
 primary_card_color := {
-	artifact :=    chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green"))
+	artifact :=    chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green") or chosen(choice:"silver"))
 	land :=        chosen(choice:"land")
 	multi :=       chosen(choice:"multicolor")
 	hybrid :=      chosen(choice:"hybrid")
@@ -1257,7 +1273,8 @@ primary_card_color := {
 	black :=       chosen(choice:"black")
 	red :=         chosen(choice:"red")
 	green :=       chosen(choice:"green")
-	multi_color := count_chosen(choices:"white, blue, black, red, green")
+	silver :=       chosen(choice:"silver")
+	multi_color := count_chosen(choices:"white, blue, black, red, green, silver")
 	if      land                                           then "land"
 	else if multi                                          then "multicolor"
 	else if multi_color == 2 and chosen(choice:"artifact") then "hybrid"		#### hybrid artifacts would show as their first color
@@ -1268,10 +1285,11 @@ primary_card_color := {
 	else if black                                          then "black"
 	else if red                                            then "red"
 	else if green                                          then "green"
+	else if silver                                          then "silver"
 	else                                                        input
 }
 sparker_card_color := {
-	artifact :=    chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green"))
+	artifact :=    chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green") or chosen(choice:"silver"))
 	land :=        chosen(choice:"land")
 	multi :=       chosen(choice:"multicolor")
 	hybrid :=      chosen(choice:"hybrid")
@@ -1280,7 +1298,8 @@ sparker_card_color := {
 	black :=       chosen(choice:"black")
 	red :=         chosen(choice:"red")
 	green :=       chosen(choice:"green")
-	multi_color := count_chosen(choices:"white, blue, black, red, green")
+	silver :=       chosen(choice:"silver")
+	multi_color := count_chosen(choices:"white, blue, black, red, green, silver")
 	if      land                                           then "colorless"
 	else if multi                                          then "multicolor"
 	else if multi_color >= 2                               then "multicolor"
@@ -1290,7 +1309,7 @@ sparker_card_color := {
 	else if blue                                           then "blue"
 	else if black                                          then "black"
 	else if red                                            then "red"
-	else if green                                          then "green"
+	else if silver                                          then "silver"
 	else                                                        "colorless"
 }
 
@@ -1310,7 +1329,8 @@ color_to_mana := replace@(match: "white", replace: "[W]")+
 	replace@(match: "blue", 	replace: "[U]")+
 	replace@(match: "black", 	replace: "[B]")+
 	replace@(match: "red", 		replace: "[R]")+
-	replace@(match: "green", 	replace: "[G]")
+	replace@(match: "green", 	replace: "[G]")+
+	replace@(match: "silver", 	replace: "[I]")
 
 #### convert number word to digit
 digital_number := {
@@ -1474,7 +1494,7 @@ protection_code := {
 				else if match(input, match:"^(converted|mana|power|toughness)") then "anything with " + replace(input, match:"and from", replace:"or", in_context:" <match> ")
 				else if contains(input, match:"the chosen player") then "anything " + replace(input, match:"the chosen", replace:"controlled by that")
 				else if contains(input, match:"the chosen") then "anything with " + replace(input, match:"the chosen", replace:"that")
-				else if contains(input, match:"all colors") then "anything " + replace(input, match:"all colors", replace:"that's white, blue, black, red, or green")
+				else if contains(input, match:"all colors") then "anything " + replace(input, match:"all colors", replace:"that's white, blue, black, red, green, or silver")
 				else if match(input, match:"^you$") then "anything you control"
 				else if match(input, match:"^its owner$") then "anything its owner controls"
 				else if match(input, match:"^(each of )?your opponents$") then "anything " + replace(input, match:"(each of )?your opponents", replace:"controlled by those players")
@@ -1500,7 +1520,7 @@ protection_code := {
 	output
 }
 phy_reminder := {
-	phy_match := filter_text(input, match:"(/[WUBRG])+", in_context:"H<match>")
+	phy_match := filter_text(input, match:"(/[WUBRGI])+", in_context:"H<match>")
 	letters := split_text(phy_match, match:"/")
 	reminder_text := ""
 	if length(letters) == 2 then 
@@ -1702,7 +1722,7 @@ mana_un_context := "(mana values? <match>|converted mana costs? <match>|<match> 
 
 #### atoms
 #### truncates the name of legends
-legend_filter := replace@(match:"(, | of | the | \"| “)[^<]*", replace: "" )
+legend_filter := replace@(match:"(, | of | the | \"| “).*", replace: "" )
 #### does this frame support Alchemy Rebalanced mana symbol in names?
 #### set tab insert atoms
 inserts_values := { split_text(set.inserts+";;;;;;;;;", match:";") }
@@ -2852,6 +2872,7 @@ card_new_color := {
 	else if card.card_color == "black" then "b"
 	else if card.card_color == "red" then "r"
 	else if card.card_color == "green" then "g"
+	else if card.card_color == "silver" then "i"
 	else if contains(card.card_color, match:"artifact") then "a"
 	else if contains(card.card_color, match:"multi") or contains(card.card_color, match:"hybrid") then "m"
 	else "c"
@@ -3456,13 +3477,13 @@ card_name_for_face := {
 	tag := if input == 1 then "" else "_" + input
 	if (set.CARDNAME_replacement == "card's type" xor reverse)
 		then (
-			ty := to_lower(remove_tag(tag:"<size", cardname_type(card["type"+tag])))
+			ty := to_lower(cardname_type(card["type"+tag]))
 			if ty == "" then "this"
 			else "this " + ty
 		)
 	else if set.CARDNAME_replacement == "card's alias" and card["alias"+tag] != ""
-		then remove_tag(tag:"<size", card["alias"+tag])
-	else remove_tag(tag:"<size", card["name"+tag])
+		then card["alias"+tag]
+	else card["name"+tag]
 }@(reverse:false)
 cardname_type := {
 	if is_creature(input)
@@ -3752,7 +3773,7 @@ transform_symbol_script :=
 }
 transform_symbol_backwards_compatibility :=
 	#### remove sparker and modal color options
-	replace@(match: "(sparker|modal front|modal back)( [(]colored[)])? (default|white|blue|black|red|green|multicolor|colorless|artifact)", replace: "_1") +
+	replace@(match: "(sparker|modal front|modal back)( [(]colored[)])? (default|white|blue|black|red|green|silver|multicolor|colorless|artifact)", replace: "_1") +
 	#### add new render options
 	{
 		if		not chosen(input, choice: "position default")
@@ -5352,10 +5373,7 @@ pinline_mask_3 := {""}
 ############################################################## Crown
 crowns_folder := {"/magic-modules.mse-include/crowns/375/"}
 module_legend_crown_template := { crowns_folder() + input + "crown.png" }
-module_borderless_crown_template := { crowns_folder() + "borderless/" + input + "crown.png" }
-module_nyx_crown_template := { crowns_folder() + "nyx/" + input + "crown.png" }
-module_companion_crown_template := { crowns_folder() + "companion/" + input + "crown.png" }
-module_brawl_crown_template := { crowns_folder() + "brawl/" + input + "crown.png" }
+crown_template := { crowns_folder() + type + "/" + input + "crown.png" }@(type: "")
 module_custom_crown_template := { 
 	"/magic-mainframe-extras.mse-include/"
 	+ styling.custom_crown_location
@@ -5366,14 +5384,23 @@ module_custom_crown_template := {
 module_crown_template := {
 	crown_shape := styling.legend_crown or else crown_type
 	if override != "" then crown_shape := override
-	case crown_shape of
-		"borderless": module_borderless_crown_template(),
-		"nyx": module_nyx_crown_template(),
-		"companion": module_companion_crown_template(),
-		"brawl": module_brawl_crown_template(),
-		"custom": module_custom_crown_template(),
-		else: module_legend_crown_template();
+
+	if crown_shape == "custom" then module_custom_crown_template()
+	else if crown_shape == "standard" or crown_shape == "normal" then module_legend_crown_template()
+	else crown_template(type: crown_shape)
 }@(crown_type:"normal", override:"")
+
+# module_crown_template := {
+# 	crown_shape := styling.legend_crown or else crown_type
+# 	if override != "" then crown_shape := override
+# 	case crown_shape of
+# 		"borderless": module_borderless_crown_template(),
+# 		"nyx": module_nyx_crown_template(),
+# 		"companion": module_companion_crown_template(),
+# 		"brawl": module_brawl_crown_template(),
+# 		"custom": module_custom_crown_template(),
+# 		else: module_legend_crown_template();
+# }@(crown_type:"normal", override:"")
 module_crown_mask := {""}
 
 module_crown := { color_background(type:"crown",     base_hybrid:card_hybrid, folder:crowns_folder()) }
@@ -6304,6 +6331,7 @@ alias_colors := {
 		b: rgb(39, 38, 36),
 		r: rgb(168, 88, 81),
 		g: rgb(6, 120, 69),
+		i: rgb(264, 27, 56),
 		a: rgb(239, 238, 236),
 		m: rgb(243, 210, 105),
 		c: rgb(173, 151, 137)
@@ -6547,7 +6575,7 @@ apply_index := {
 		}
 		color: {fill_len(color_of_card(), lead:"A")},
 		"color category": {
-			indexes := [[lang_setting("colorless")], [lang_setting("white")], [lang_setting("blue")], [lang_setting("black")], [lang_setting("red")], [lang_setting("green")], [lang_setting("purple")], [lang_setting("pink")], [lang_setting("yellow")], [lang_setting("orange")], [lang_setting("brown")], [lang_setting("multicolor")], [lang_setting("hybrid")]]
+			indexes := [[lang_setting("colorless")], [lang_setting("white")], [lang_setting("blue")], [lang_setting("black")], [lang_setting("red")], [lang_setting("green")], [lang_setting("silver")] [lang_setting("purple")], [lang_setting("pink")], [lang_setting("yellow")], [lang_setting("orange")], [lang_setting("brown")], [lang_setting("multicolor")], [lang_setting("hybrid")]]
 			fill_len(position(of:[card.color_category], in:indexes, lead:"0", fill_to:2))
 		},
 		"exact color": {
@@ -6632,6 +6660,12 @@ skeleton_shard_rares 		:= 0
 skeleton_wedge_commons 		:= 0
 skeleton_wedge_uncommons 	:= 0
 skeleton_wedge_rares 		:= 0
+skeleton_silver_shard_commons 		:= 0
+skeleton_silver_shard_uncommons 	:= 0
+skeleton_silver_shard_rares 		:= 0
+skeleton_silver_wedge_commons 		:= 0
+skeleton_silver_wedge_uncommons 	:= 0
+skeleton_silver_wedge_rares 		:= 0
 skeleton_artifact_commons 	:= 6
 skeleton_artifact_uncommons := 4  ## Previously 5
 skeleton_artifact_rares 	:= 0
@@ -6652,35 +6686,46 @@ skeleton_runner := {
 				(cards := cards + [new_card([name:prefix+letter_list[x]+fill_len(y, lead:"0"), rarity:rarity, super_type:super_type, casting_cost:mana_list[x]])];)
 	)
 	cards
-}@(count:1, rarity:"common", type:"", prefix:"C", super_type:"", color_list:["white", "blue", "black", "red", "green"], letter_list:["W", "U", "B", "R", "G"], mana_list:"nope")
+}@(count:1, rarity:"common", type:"", prefix:"C", super_type:"", color_list:["white", "blue", "black", "red", "green", "silver"], letter_list:["W", "U", "B", "R", "G", "I"], mana_list:"nope")
 #### outside to make singleton scripts easier
 blank_list_5 := ["","","","",""]
 blank_list_10 := ["","","","","","","","","",""]
-mana_list_base := ["W", "U", "B", "R", "G"]
+blank_list_15 := blank_list_5 + blank_list_10
+mana_list_base := ["W", "U", "B", "R", "G","I"]
 mana_list_ally := ["WU","UB","BR","RG","GW"]
 mana_list_enemy := ["WB","UR","BG","RW","GU"]
+mana_list_silver := ["IW","IU","IB","IR","IG"]
 mana_list_ally_hybrid := ["W/U","U/B","B/R","R/G","G/W"]
 mana_list_enemy_hybrid := ["W/B","U/R","B/G","R/W","G/U"]
+mana_list_silver_hybrid := ["I/W","I/U","I/B","I/R","I/G"]
 mana_list_shard := ["WUB","UBR","BRG","RGW","GWU"]
 mana_list_wedge := ["WBG","URW","BGU","RWB","GUR"]
+mana_list_silver_shard := ["IWU","IUB","IBR","IRG","IGW"]
+mana_list_silver_wedge := ["IWB","IUR","IBG","IRW","IGU"]
 skeleton_script := {
 	cards := [];
 	cards := cards + skeleton_runner(count:skeleton_commons, mana_list:mana_list_base);
 	cards := cards + skeleton_runner(count:skeleton_uncommons, prefix:"U", rarity:"uncommon", mana_list:mana_list_base);
 	cards := cards + skeleton_runner(count:skeleton_rares, prefix:"R", rarity:"rare", mana_list:mana_list_base);
 	cards := cards + skeleton_runner(count:skeleton_mythics, prefix:"M", rarity:"mythic rare", mana_list:mana_list_base);
-	cards := cards + skeleton_runner(count:skeleton_gold_commons, prefix:"CM", rarity:"common", letter_list:blank_list_10, mana_list:mana_list_ally+mana_list_enemy);
-	cards := cards + skeleton_runner(count:skeleton_gold_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_10, mana_list:mana_list_ally+mana_list_enemy);
-	cards := cards + skeleton_runner(count:skeleton_gold_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_10, mana_list:mana_list_ally+mana_list_enemy);
-	cards := cards + skeleton_runner(count:skeleton_hybrid_commons, prefix:"CZ", rarity:"common", letter_list:blank_list_10, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid);
-	cards := cards + skeleton_runner(count:skeleton_hybrid_uncommons, prefix:"UZ", rarity:"uncommon", letter_list:blank_list_10, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid);
-	cards := cards + skeleton_runner(count:skeleton_hybrid_rares, prefix:"RZ", rarity:"rare", letter_list:blank_list_10, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid);
+	cards := cards + skeleton_runner(count:skeleton_gold_commons, prefix:"CM", rarity:"common", letter_list:blank_list_15, mana_list:mana_list_ally+mana_list_enemy+mana_list_silver);
+	cards := cards + skeleton_runner(count:skeleton_gold_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_15, mana_list:mana_list_ally+mana_list_enemy+mana_list_silver);
+	cards := cards + skeleton_runner(count:skeleton_gold_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_15, mana_list:mana_list_ally+mana_list_enem+mana_list_silvery);
+	cards := cards + skeleton_runner(count:skeleton_hybrid_commons, prefix:"CZ", rarity:"common", letter_list:blank_list_15, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid+mana_list_silver_hybrid);
+	cards := cards + skeleton_runner(count:skeleton_hybrid_uncommons, prefix:"UZ", rarity:"uncommon", letter_list:blank_list_15, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid)+mana_list_silver_hybrid;
+	cards := cards + skeleton_runner(count:skeleton_hybrid_rares, prefix:"RZ", rarity:"rare", letter_list:blank_list_15, mana_list:mana_list_ally_hybrid+mana_list_enemy_hybrid+mana_list_silver_hybrid);
 	cards := cards + skeleton_runner(count:skeleton_shard_commons, prefix:"CM", rarity:"common", letter_list:blank_list_5, mana_list:mana_list_shard);
 	cards := cards + skeleton_runner(count:skeleton_shard_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_5, mana_list:mana_list_shard);
 	cards := cards + skeleton_runner(count:skeleton_shard_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_5, mana_list:mana_list_shard);
 	cards := cards + skeleton_runner(count:skeleton_wedge_commons, prefix:"CM", rarity:"common", letter_list:blank_list_5, mana_list:mana_list_wedge);
 	cards := cards + skeleton_runner(count:skeleton_wedge_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_5, mana_list:mana_list_wedge);
 	cards := cards + skeleton_runner(count:skeleton_wedge_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_5, mana_list:mana_list_wedge);
+	cards := cards + skeleton_runner(count:skeleton_silver_shard_commons, prefix:"CM", rarity:"common", letter_list:blank_list_5, mana_list:mana_list_shard);
+	cards := cards + skeleton_runner(count:skeleton_silver_shard_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_5, mana_list:mana_list_shard);
+	cards := cards + skeleton_runner(count:skeleton_silver_shard_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_5, mana_list:mana_list_shard);
+	cards := cards + skeleton_runner(count:skeleton_silver_wedge_commons, prefix:"CM", rarity:"common", letter_list:blank_list_5, mana_list:mana_list_wedge);
+	cards := cards + skeleton_runner(count:skeleton_silver_wedge_uncommons, prefix:"UM", rarity:"uncommon", letter_list:blank_list_5, mana_list:mana_list_wedge);
+	cards := cards + skeleton_runner(count:skeleton_silver_wedge_rares, prefix:"RM", rarity:"rare", letter_list:blank_list_5, mana_list:mana_list_wedge);
 	for i from 1 to skeleton_artifact_commons do cards := cards + [new_card([name:"CA"+fill_len(i, lead:"0"), rarity:"common", super_type:"Artifact"])];
 	for i from 1 to skeleton_artifact_uncommons do cards := cards + [new_card([name:"UA"+fill_len(i, lead:"0"), rarity:"uncommon", super_type:"Artifact"])];
 	for i from 1 to skeleton_artifact_rares do cards := cards + [new_card([name:"RA"+fill_len(i, lead:"0"), rarity:"rare", super_type:"Artifact"])];
@@ -6722,7 +6767,14 @@ skeleton_info := {
 	+"skeleton_shard_rares: " + skeleton_shard_rares + "\n"
 	+"skeleton_wedge_commons: " + skeleton_wedge_commons + "\n"
 	+"skeleton_wedge_uncommons: " + skeleton_wedge_uncommons + "\n"
-	+"skeleton_wedge_rares: " + skeleton_wedge_rares)
+	+"skeleton_wedge_rares: " + skeleton_wedge_rares
+	+"skeleton_blank_mythics: " + skeleton_blank_mythics + "\n"
+	+"skeleton_silver_shard_commons: " + skeleton_silver_shard_commons + "\n"
+	+"skeleton_silver_shard_uncommons: " + skeleton_silver_shard_uncommons + "\n"
+	+"skeleton_silver_shard_rares: " + skeleton_silver_shard_rares + "\n"
+	+"skeleton_silver_wedge_commons: " + skeleton_silver_wedge_commons + "\n"
+	+"skeleton_silver_wedge_uncommons: " + skeleton_silver_wedge_uncommons + "\n"
+	+"skeleton_silver_wedge_rares: " + skeleton_silver_wedge_rares)
 }
 ############################################################## Hashes
 #### return a new Hash
@@ -7003,6 +7055,166 @@ linked_dfc_compat_map := {
 		casting_cost_3:		front.casting_cost_2,
 		watermark_3:		front.watermark_2,
 	]
+}
+
+has_trim := {
+	chosen(card.card_trim, choice: input) or chosen(card.card_trim, choice: input + " ") or
+	chosen(card.card_trim_plus, choice: input) or chosen(card.card_trim_plus, choice: input + " ")
+}
+
+
+check_nyx_trim := {
+	lang_setting(
+		"is_enchantment"
+	)(
+		card_type
+	) 
+	and set.auto_nyx 
+	and not(
+		lang_setting(
+			"is_creature"
+		)(
+			card_type
+		) 
+		and set.auto_star
+	)
+}
+
+check_star_trim2 := {
+	lang_setting(
+		"is_enchantment"
+	)(
+		card_type
+	) 
+	and set.auto_star 
+	and (
+		lang_setting(
+			"is_creature"
+		)(
+			card_type
+		) 
+		and set.auto_nyx
+	)
+}
+
+is_type := {
+	lang_setting("is_{input}")(type)
+}
+
+match_erysite := match@(match: "(?i)Erysite")
+match_anima 		:= contains@(match: "Anima")
+match_path 			:= contains@(match: "Pathbound")
+match_revelation	:= contains@(match: "Revelation")
+match_entity		:= contains@(match: "Entity")
+match_wonder		:= contains@(match: "Wonder")
+match_frontier		:= contains@(match: "Frontier")
+match_celestial		:= contains@(match: "Celestial")
+match_realm			:= contains@(match: "Realm")
+match_focus			:= contains@(match: "Focus")
+match_chain			:= contains@(match: "Chain")
+match_vertex		:= contains@(match: "Vertex")
+match_kindred		:= contains@(match: "Kindred")
+match_foretell		:= contains@(match: "Foretell")
+match_realize		:= contains@(match: "Realize")
+match_skill			:= contains@(match: "Skill")
+match_token			:= contains@(match: "Token")
+
+
+check_star_trim := {
+	true
+}
+
+check_sanctum := {
+	# false
+	# true
+	match_wonder(card_sub_type) 
+	or match_frontier(card_sub_type) 
+	or match_celestial(card_sub_type) 
+	or match_realm(card_sub_type) 
+}
+
+check_path := {
+	match_path(lv_1) or match_anima(card_sub_type)
+}
+
+card_trim_default := {
+	""
+	+ (if check_nyx_trim() and set.alternate_nyx == "" then "nyx")
+	+ (if is_type("vehicle", type: card_sub_type) then ", vehicle")
+	+ (if is_type("snow", type: card_type) then ", snow")
+	+ (if match_revelation(card_sub_type) and not match_realize(card_text) then ", paradox")
+	+ (if match_realize(card_text) then ", inverted")
+	+ (if is_type("legendary", type: card_type) and set.auto_legends then ", legend")
+	+ (if match_erysite(card_sub_type) or match_skill(card_type) or match_token(card_type) then ", frameless art")
+	+ (if match_focus(sub_type_2) then ", adventure focus")
+	+ (if match_chain(sub_type_2) then ", adventure chain")
+	+ (if match_vertex(type_2) then ", adventure reversed")
+	+ (if match_path(lv_1) then ", mutate")
+}
+
+card_trim_plus_default := {
+	""
+	+ (if check_star_trim2() then ", star")
+	+ (if check_path() then ", path")
+	+ (if match_entity(card_sub_type) then ", familiar")
+	+ (if match_realize(card_text) then ", forge")
+	+ (if check_sanctum() then ", frontier")
+	+ (if match_kindred(card_type) and not has_trim("nyx") and not has_trim("star") and not match_revelation(card_sub_type) then ", hands")
+	+ (if check_nyx_trim() and set.alternate_nyx != "" then ", " + set.alternate_nyx)
+}
+
+card_trim_filter := {
+	input := exclusive_choice(choices: "frameless art, borderless art, special guest")
+	if (chosen(choice: "fullart")) then
+		input := require_choice(choices: "frameless art, borderless art")
+	if (contains(match: "foil")) then
+		input := require_exclusive_choice(choices: "foil normal, foil fracture, foil ghost, foil holes, foil jss, foil oil, foil old, foil oldfeed, foil parallel, foil polishedstone, foil ripples")
+	if (chosen(choice: "special guest")) then
+		input := require_choice(choice: "inverted")
+	if (chosen(choice: "adventure chain")) then
+		input:= require_choice(choice: "adventure focus")
+	if (contains(match: "adventure")) then
+		input := require_exclusive_choice(choices: "adventure normal, adventure focus, adventure omen")
+
+	input
+}
+
+crown_type_default := {
+	if has_trim("space") 
+		then "space"
+	else if has_trim("nyx") 
+		then "nyx"
+	else if has_trim("star") 
+		then "star"
+	else if (has_trim("borderless art") or has_trim("frameless art") or has_trim("special guest"))
+		then "borderless"
+	else 
+		"normal"
+}
+
+crown_type_filter := {
+	require_exclusive_choice(choices: "normal, companion, brawl, star, space, nyx, borderless, custom")
+}
+
+watermark_default := {
+	"" +
+	(if match_foretell(text) then "other magic symbols foretell2")
+}
+
+alias_type_default := {
+	if match_frontier(card_sub_type) or match_realm(card_sub_type) or match_celestial(card_sub_type)
+		then "starts in sanctum" 
+	else "none"
+}
+
+alias_type_filter := {
+	require_exclusive_choice(choices: "none, godzilla, starts in sanctum")
+}
+
+alias_default := {
+	if chosen(alias_type, choice: "starts in sanctum") 
+		then "This card can start in your sanctum.                             " 
+	else input
 }
 
 #### load the user overwrites here, doing it in game overwrites this file instead

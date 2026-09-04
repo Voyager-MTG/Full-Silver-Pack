@@ -245,10 +245,11 @@ script:
 	       write_group(title: "Black",                  code:"D") +
 	       write_group(title: "Red",                    code:"E") +
 	       write_group(title: "Green",                  code:"F") +
-	       write_group(title: "Multicolor",             code:"G") +
-	       write_group(title: "Hybrids",                code:"H") +
-	       write_group(title: "Multicolor split",       code:"I") +
-	       write_group(title: "Artifact",               code:"J") +
+	       write_group(title: "Silver",                 code:"G") +
+	       write_group(title: "Multicolor",             code:"H") +
+	       write_group(title: "Hybrids",                code:"I") +
+	       write_group(title: "Multicolor split",       code:"J") +
+	       write_group(title: "Artifact",               code:"K") +
 	       write_group(title: "Non-basic lands",        code:"L") +
 	       write_group(title: "Basic lands",            code:"")
 	    else write_cards(cards: cards)

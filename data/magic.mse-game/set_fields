@@ -476,6 +476,10 @@ set field:
 	name: auto nyx
 	description: Automatically apply the Enchantment frame on Mainframe templates.
 set field:
+	type: boolean
+	name: auto star
+	description: Automatically apply the star Enchantment frame on Mainframe templates.
+set field:
 	type: text
 	name: alternate nyx
 	description: Use an alternate nyx source folder from magic-mainframe-extras.mse-include.
