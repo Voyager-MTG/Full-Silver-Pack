@@ -1,4 +1,4 @@
-# Full-Magic-Pack 
+# Full-Magic-Pack
 Pack containing nearly all public Magic templates for MSE, except outdated ones. You can submit things we're missing via Pull Request or linking a source in Issues.
 
 # Installation
