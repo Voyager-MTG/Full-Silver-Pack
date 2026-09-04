@@ -11,7 +11,8 @@ permissions:
 jobs:
   sync-repos:
     runs-on: windows-latest
-    permissions: read-all|write-all
+    permissions:
+        contents: write
 
     steps:
       - name: Checkout Full-Magic-Pack
